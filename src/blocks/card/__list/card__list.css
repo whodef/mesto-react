@@ -1,0 +1,26 @@
+.card__list {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    justify-self: center;
+    justify-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(282px, 1fr));
+    grid-column-gap: 17px;
+    grid-row-gap: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    .card__list {
+        padding: 0 19px;
+        grid-template-columns: repeat(2, minmax(282px, 1fr));
+        grid-row-gap: 17px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .card__list {
+        grid-template-columns: minmax(282px, 1fr);
+    }
+}

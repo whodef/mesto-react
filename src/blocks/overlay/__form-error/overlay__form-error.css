@@ -1,0 +1,14 @@
+.overlay__form-error {
+    visibility: hidden;
+    margin: 0 0 4px;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(255, 0, 0, 1);
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+}
+
+.overlay__form-error:last-of-type {
+    margin-bottom: 0;
+}

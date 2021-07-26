@@ -1,0 +1,12 @@
+.overlay__image-container {
+    margin: 0;
+    max-width: 75vw;
+    max-height: 75vh;
+    position: relative;
+}
+
+@media screen and (max-width: 660px) {
+    .overlay__image-container {
+        max-width: calc(100% - 40px * 2);
+    }
+}

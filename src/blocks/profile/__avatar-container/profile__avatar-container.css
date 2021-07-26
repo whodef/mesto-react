@@ -1,0 +1,42 @@
+.profile__avatar-container {
+    margin: 0;
+    padding: 0;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    border-radius: 50%;
+    justify-self: flex-start;
+    flex-direction: row;
+    background: none;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile__avatar-container:hover .profile__icon {
+    opacity: 1;
+}
+
+.profile__avatar-container:hover .profile__image {
+    opacity: .2;
+}
+
+.profile__avatar-container:focus {
+    outline: none;
+}
+
+.profile__avatar-container:focus .profile__icon {
+    opacity: 1;
+}
+
+.profile__avatar-container:focus .profile__image {
+    opacity: .2;
+}
+
+@media screen and (max-width: 660px) {
+    .profile__avatar-container {
+        margin: 30px auto 0;
+        justify-items: center;
+    }
+}

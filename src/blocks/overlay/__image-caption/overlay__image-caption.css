@@ -1,0 +1,12 @@
+.overlay__image-caption {
+    margin: 10px 0 0;
+    padding: 0;
+    max-width: 75vh;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.52px;
+    color: rgba(255, 255, 255, 1);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

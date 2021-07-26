@@ -1,0 +1,6 @@
+.card__item {
+    position: relative;
+    max-width: 282px;
+    display: flex;
+    flex-direction: column;
+}
