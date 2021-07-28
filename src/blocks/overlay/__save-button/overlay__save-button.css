@@ -17,10 +17,6 @@
     cursor: pointer;
 }
 
-.overlay__save-button:hover {
-    opacity: .8;
-}
-
 .overlay__save-button:disabled {
     opacity: 1;
     border: none;
