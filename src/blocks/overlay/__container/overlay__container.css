@@ -1,41 +1,32 @@
 .overlay__container {
-    padding: 34px 36px 37px;
-    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 36px 36px 37px;
     width: 430px;
-    height: 330px;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+    align-items: center;
+    position: relative;
     background: rgba(255, 255, 255, 1);
-    box-shadow: 0 0 25px rgba(0, 0, 0, .15);
+    box-sizing: border-box;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     color: rgba(0, 0, 0, 1);
+}
+
+@media screen and (max-width: 760px) {
+    .overlay__container {
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 660px) {
     .overlay__container {
         padding: 25px 22px;
         width: 320px;
-        height: 322px;
     }
 }
 
 @media screen and (max-width: 360px) {
     .overlay__container {
         width: 282px;
-    }
-}
-
-.overlay__container_confirm {
-    height: 181px;
-}
-
-.overlay__container_avatar {
-    height: 272px;
-}
-
-@media screen and (max-width: 321px) {
-    .overlay__container_avatar {
-        height: 240px;
     }
 }
