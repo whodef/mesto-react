@@ -49,7 +49,7 @@ const App = () => {
             }
         };
 
-        if (!isEditProfilePopupOpen || !isEditAvatarPopupOpen|| !isAddPlacePopupOpen || !isImagePopupOpen || !isConfirm) {
+        if (isEditProfilePopupOpen || isEditAvatarPopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isConfirm) {
             window.addEventListener('keyup', handleEsc);
         }
 

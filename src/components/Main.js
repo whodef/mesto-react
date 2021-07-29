@@ -2,7 +2,6 @@ import '../index.css';
 import {useState, useEffect} from 'react';
 import api from '../utils/api';
 import Card from './Card';
-// import avatar from "../images/avatar.jpg";
 
 const Main = (props) => {
     const [userName, setUserName] = useState('');
@@ -30,27 +29,24 @@ const Main = (props) => {
                 .catch(res => {
                     console.error(`Error:${res}`);
                 })
-        }
-        , []);
+        }, []);
 
     return (
         <main className="content">
             <section className="profile">
                 <div className="profile__avatar-container" onClick={props.onEditAvatar}>
-                    <img className="profile__image" src={userAvatar} alt="Аватар"
-                         style={{backgroundImage: `url(${userAvatar})`}}/>
+                    <img className="profile__image" src={userAvatar} alt="Аватар"/>
                     <span className="profile__icon"/>
                 </div>
                 <div className="profile__indication">
                     <div className="profile__caption">
                         <h1 className="profile__name">{userName}</h1>
-                        <button className="profile__change-button" id="change-profile" type="button"
-                                aria-label="Изменить" onClick={props.onEditProfile}/>
+                        <button className="profile__change-button" type="button" aria-label="Изменить"
+                                onClick={props.onEditProfile}/>
                     </div>
                     <p className="profile__description">{userDescription}</p>
                 </div>
-                <button className="profile__add-button" id="add-new-card" type="button" aria-label="Добавить"
-                        onClick={props.onAddPlace}/>
+                <button className="profile__add-button" type="button" aria-label="Добавить" onClick={props.onAddPlace}/>
             </section>
 
             <section className="card">
