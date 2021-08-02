@@ -16,9 +16,6 @@
 
 * JavaScript (ES6)
     * Vanilla JS ✨
-    
-
-* Webpack ✨
   
 
 * React ✨
