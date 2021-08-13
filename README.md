@@ -23,7 +23,7 @@
 ----
 
 ### Проверить, что [МЕСТО](https://whodef.github.io/mesto/) на месте
-[<img src="https://thumbs.gfycat.com/CheerySeparateGoldeneye-size_restricted.gif" width="155" height="120">](https://whodef.github.io/mesto/)
+[<img src="https://64.media.tumblr.com/1d6abee87aa71fc219c2312ba0c7c7c5/tumblr_p69s21P7KM1w3y4ilo1_500.gifv" width="155" height="155">](https://whodef.github.io/mesto/)
 
 ----
 
