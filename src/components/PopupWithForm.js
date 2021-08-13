@@ -1,5 +1,3 @@
-import '../index.css';
-
 const PopupWithForm = (props) => {
     return (
         <section className={`overlay overlay_type_${props.name} ${props.isOpen ? 'overlay_open' : ''}`}>
@@ -8,7 +6,7 @@ const PopupWithForm = (props) => {
                 <button className="overlay__close-button" type="button" onClick={props.onClose}/>
                 <form className="overlay__form" action="#" name={props.name} onSubmit={props.onSubmit} method="POST">
                     {props.children}
-                    <button className="overlay__save-button" id="save" type="submit" name={props.name}>
+                    <button className="overlay__save-button" type="submit" name={props.name}>
                         {props.submitText}
                     </button>
                 </form>

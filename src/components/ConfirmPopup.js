@@ -8,7 +8,7 @@ const ConfirmPopup = (props) => {
     }
 
     return (
-        <PopupWithForm className="overlay" id="overlay-with-submit" name="popup_confirm" title="Вы уверены?"
+        <PopupWithForm className="overlay" name="popup_confirm" title="Вы уверены?"
                        isOpen={props.isOpen} submitText="Да" onClose={props.onClose} onSubmit={handleSubmit}
         />
     )

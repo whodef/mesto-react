@@ -1,9 +1,9 @@
 import React from 'react';
-import {currentUserContext} from '../contexts/CurrentUserContext';
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
 const Card = (props) => {
     // Подписка на контекст
-    const currentUser = React.useContext(currentUserContext);
+    const currentUser = React.useContext(CurrentUserContext);
 
     // Вынос повторяющегося кода в переменную для лаконичности
     const card = props.card;
@@ -36,7 +36,6 @@ const Card = (props) => {
     }
 
     return (
-        <currentUserContext.Provider value={currentUser}>
             <li className="card__item">
                 <img className="card__image" src={card.link} alt={card.name} onClick={handleCardClick}/>
                 <button className={`card__delete-button ${cardDeleteButtonClassName}`} type="button"
@@ -50,7 +49,6 @@ const Card = (props) => {
                     </div>
                 </div>
             </li>
-        </currentUserContext.Provider>
     );
 }
 

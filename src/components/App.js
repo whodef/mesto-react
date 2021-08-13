@@ -1,6 +1,6 @@
 import '../index.css';
 import {useState, useEffect} from 'react';
-import {currentUserContext} from '../contexts/CurrentUserContext';
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
 import api from '../utils/api';
 import Header from './Header';
 import Main from './Main';
@@ -24,21 +24,16 @@ const App = () => {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
     const [isImagePopupOpen, setImagePopupOpen] = useState(false);
-
-    // Прочее
     const [isConfirm, setConfirm] = useState(false);
-    const [isLoaded, setIsLoaded] = useState(false);
 
     // Асинхронное получение данных пользователя
     useEffect(() => {
-        Promise.all([
-            api.getUserData()
-                .then(user => setCurrentUser(user)),
-            api.getCards()
-                .then(cards => setCards(cards))
-                .catch(err => console.error(err))
-        ])
-            .then(() => setIsLoaded(true))
+        Promise.all([api.getUserData(), api.getCards()])
+            .then(([user, cards]) => {
+                setCurrentUser(user);
+                setCards(cards);
+            })
+            .catch(err => console.error(err));
     }, []);
 
     const handleEditAvatarClick = () => {
@@ -89,6 +84,7 @@ const App = () => {
                 setCurrentUser(user);
                 closeAllPopups();
             })
+            .catch(err => console.error(err));
     }
 
     const handleAddPlaceSubmit = (data) => {
@@ -97,6 +93,7 @@ const App = () => {
                 setCards([newCard, ...cards]);
                 closeAllPopups();
             })
+            .catch(err => console.error(err));
     }
 
     const handleUpdateAvatar = (data) => {
@@ -105,6 +102,7 @@ const App = () => {
                 setCurrentUser(user);
                 closeAllPopups();
             })
+            .catch(err => console.error(err));
     }
 
     // Закрытие всплывающих окон
@@ -134,12 +132,11 @@ const App = () => {
     }, [isEditProfilePopupOpen, isEditAvatarPopupOpen, isAddPlacePopupOpen, isImagePopupOpen, isConfirm]);
 
     return (
-        <currentUserContext.Provider value={currentUser}>
+        <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
                 <Header/>
                 <Main
                     cards={cards}
-                    isLoaded={isLoaded}
                     onEditAvatar={handleEditAvatarClick}
                     onEditProfile={handleEditProfileClick}
                     onAddPlace={handleAddPlaceClick}
@@ -184,7 +181,7 @@ const App = () => {
                     card={selectedCard}
                 />
             </div>
-        </currentUserContext.Provider>
+        </CurrentUserContext.Provider>
     );
 }
 
