@@ -86,6 +86,7 @@ class Api {
     }
 
     deleteCard(cardId) {
+        console.log(cardId);
         return fetch(`${this._api_prefix}/cards/${cardId}`, {
             method: 'DELETE',
             headers: this._mandatory_headers

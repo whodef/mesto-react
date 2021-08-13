@@ -1,6 +1,6 @@
-import {useRef, useState, useContext} from "react";
-import {currentUserContext} from "../contexts/CurrentUserContext";
-import PopupWithForm from "./PopupWithForm";
+import {useRef, useState, useContext} from 'react';
+import {currentUserContext} from '../contexts/CurrentUserContext';
+import PopupWithForm from './PopupWithForm';
 
 const AddPlacePopup = (props) => {
     // Подписка на контекст
@@ -19,16 +19,19 @@ const AddPlacePopup = (props) => {
         e.preventDefault();
         props.onUpdatePlace({
             name,
-            link: link.current.value,
+            link: link.current.value
         });
-        // setName('');
-        // link.current.value = '';
+
+        // Сбрасывание значений инпутов, правда корявое
+        setName('');
+        link.current.value = '';
     }
 
     return (
         <currentUserContext.Provider value={currentUser}>
             <PopupWithForm className="overlay" id="new-card-overlay" name="popup_add-cards" title="Новое место"
-                           submitText="Создать" isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleAddPlaceSubmit}>
+                           submitText="Создать" isOpen={props.isOpen} onClose={props.onClose}
+                           onSubmit={handleAddPlaceSubmit}>
                 <div className="overlay__form-input-set">
                     <input className="overlay__form-input overlay__form-input_type_name" id="card-title" type="text"
                            name="input-name-card" placeholder="Название" minLength="2" maxLength="50" value={name}

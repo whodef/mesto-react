@@ -1,6 +1,6 @@
-import {useRef, useContext} from "react";
-import {currentUserContext} from "../contexts/CurrentUserContext";
-import PopupWithForm from "./PopupWithForm";
+import {useRef, useContext} from 'react';
+import {currentUserContext} from '../contexts/CurrentUserContext';
+import PopupWithForm from './PopupWithForm';
 
 const EditAvatarPopup = (props) => {
     // Подписка на контекст
@@ -11,7 +11,6 @@ const EditAvatarPopup = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         props.onEditAvatar({
             link: avatarRef.current.value,
         })

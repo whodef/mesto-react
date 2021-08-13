@@ -1,6 +1,6 @@
 import '../index.css';
 import {useContext} from 'react';
-import {currentUserContext} from "../contexts/CurrentUserContext";
+import {currentUserContext} from '../contexts/CurrentUserContext';
 import Card from './Card';
 
 const Main = (props) => {
@@ -32,8 +32,9 @@ const Main = (props) => {
                         {/* Здесь добавляется template для карточек */}
                         {props.cards.map(item => (
                             <Card key={item._id} card={item} onCardClick={props.onCardClick}
-                                  onCardLike={props.onLikeClick} onCardDelete={props.onDeleteClick}
-                            />))}
+                                  onLikeClick={props.onLikeClick} onDeleteClick={props.onDeleteClick}
+                            />
+                        ))}
                     </ul>
                 </section>
             </main>

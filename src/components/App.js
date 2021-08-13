@@ -5,27 +5,31 @@ import api from '../utils/api';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
+import ConfirmPopup from './ConfirmPopup';
 
 const App = () => {
     // Для получения данных пользователя, данных карточек
     const [currentUser, setCurrentUser] = useState({});
     const [cards, setCards] = useState([]);
 
+    // Для выбора карточки
     const [selectedCard, setSelectedCard] = useState({});
 
+    // Для открытия-закрытия всплывающих окон
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
     const [isImagePopupOpen, setImagePopupOpen] = useState(false);
 
+    // Прочее
     const [isConfirm, setConfirm] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    // Асинхронное получение данных пользователя
     useEffect(() => {
         Promise.all([
             api.getUserData()
@@ -59,6 +63,7 @@ const App = () => {
         setConfirm(true);
     }
 
+    // Обработчики для работы с API
     const handleCardLike = (card) => {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
 
@@ -79,7 +84,7 @@ const App = () => {
     }
 
     const handleUpdateUser = (data) => {
-        api.setProfileInfo(data)
+        api.setProfileInfo(data.name, data.about)
             .then(user => {
                 setCurrentUser(user);
                 closeAllPopups();
@@ -87,21 +92,22 @@ const App = () => {
     }
 
     const handleAddPlaceSubmit = (data) => {
-        api.addCard(data)
+        api.addCard(data.name, data.link)
             .then(newCard => {
                 setCards([newCard, ...cards]);
                 closeAllPopups();
             })
     }
 
-    const handleUpdateAvatar = (link) => {
-        api.setUserAvatar(link)
+    const handleUpdateAvatar = (data) => {
+        api.setUserAvatar(data.link)
             .then(user => {
                 setCurrentUser(user);
                 closeAllPopups();
             })
     }
 
+    // Закрытие всплывающих окон
     const closeAllPopups = () => {
         setIsEditProfilePopupOpen(false);
         setIsAddPlacePopupOpen(false);
@@ -111,6 +117,7 @@ const App = () => {
         setSelectedCard({});
     }
 
+    // Реализация открытия-закрытия по 'Esc'
     useEffect(() => {
         const handleEsc = (e) => {
             if (e.key === "Escape") {
@@ -164,14 +171,17 @@ const App = () => {
                 />
 
                 {/* Всплывающее окно для принятия решения */}
-                <PopupWithForm className="overlay" id="overlay-with-submit" name="popup_confirm" title="Вы уверены?"
-                               isOpen={isConfirm} onConfirmClick={handleConfirm} submitText="Да"
-                               onClose={closeAllPopups} onConfirm={handleDeleteCard}/>
+                <ConfirmPopup
+                    isOpen={isConfirm}
+                    onClose={closeAllPopups}
+                    onSubmit={handleDeleteCard}
+                    card={selectedCard}
+                />
 
                 <ImagePopup
-                    card={selectedCard}
-                    onClose={closeAllPopups}
                     isOpen={isImagePopupOpen}
+                    onClose={closeAllPopups}
+                    card={selectedCard}
                 />
             </div>
         </currentUserContext.Provider>

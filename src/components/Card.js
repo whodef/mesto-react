@@ -1,5 +1,5 @@
 import React from 'react';
-import {currentUserContext} from "../contexts/CurrentUserContext";
+import {currentUserContext} from '../contexts/CurrentUserContext';
 
 const Card = (props) => {
     // Подписка на контекст
@@ -22,6 +22,7 @@ const Card = (props) => {
     // Переменная, которая задаётся позже в `className` для кнопки удаления
     const cardLikeButtonClassName = `${isLiked ? 'card__like-button_active' : 'card__like-button_inactive'}`;
 
+    // Обработчики
     const handleCardClick = () => {
         props.onCardClick(card);
     }
@@ -38,8 +39,8 @@ const Card = (props) => {
         <currentUserContext.Provider value={currentUser}>
             <li className="card__item">
                 <img className="card__image" src={card.link} alt={card.name} onClick={handleCardClick}/>
-                <button className={`card__delete-button ${cardDeleteButtonClassName}`} type="button" aria-label="Удалить"
-                        onClick={handleDeleteClick}/>
+                <button className={`card__delete-button ${cardDeleteButtonClassName}`} type="button"
+                        aria-label="Удалить" onClick={handleDeleteClick}/>
                 <div className="card__description">
                     <h2 className="card__description-title">{card.name}</h2>
                     <div className="card__description-like-container">
